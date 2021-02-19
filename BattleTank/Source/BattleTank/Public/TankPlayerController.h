@@ -17,4 +17,7 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 
 public:
 	ATank* GetControlledTank() const;
+
+	virtual void BeginPlay() override; //overide because beginplay already exists somewhere else in maybe /Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h and other places .
+										//so override allows us to extend the functionality of the beginplay method 
 };
