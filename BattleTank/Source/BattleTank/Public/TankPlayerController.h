@@ -20,4 +20,12 @@ public:
 
 	virtual void BeginPlay() override; //overide because beginplay already exists somewhere else in maybe /Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h and other places .
 										//so override allows us to extend the functionality of the beginplay method 
+
+	virtual void Tick(float DeltaTime) override;
+
+private:
+
+// Start the tank moving the barrel so that a shot would hit where
+// the crosshair intersects the world
+	void AimTowardsCrosshair();
 };
