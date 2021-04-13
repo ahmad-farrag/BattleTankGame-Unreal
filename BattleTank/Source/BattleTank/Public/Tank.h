@@ -20,6 +20,11 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+
+	void AimAt(FVector HitLocation);
+
+private:
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
