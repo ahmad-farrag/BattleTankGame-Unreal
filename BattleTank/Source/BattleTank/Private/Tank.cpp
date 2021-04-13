@@ -49,5 +49,5 @@ void ATank::AimAt(FVector HitLocation)
 	//auto OurTankName = GetName();
 	//UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s"), *OurTankName, *HitLocation.ToString());
 	//The above 2 lines were moved to TankAimingComponent
-	TankAimingComponent->AimAt(HitLocation);
+	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
