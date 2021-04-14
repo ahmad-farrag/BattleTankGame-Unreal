@@ -2,11 +2,13 @@
 
 #pragma once
 
-#include "Tank.h"
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
 #include "Camera/PlayerCameraManager.h"
 #include "TankPlayerController.generated.h" // Must be the last include
+
+// Forward Declaration
+class ATank;
 
 /**
  * 
