@@ -18,7 +18,8 @@ enum class EFiringState : uint8
 	Aiming,
 	Locked
 };
-
+/*Enumeration is a user defined datatype in C/C++ language. It is used to assign names to the integral constants which makes a program easy to read and maintain. The keyword “enum” is used to declare an enumeration.
+Enum in unreal allows you to use different options from code to blueprint .. for example firing state could be aiming or realoading or firing .. enum holds those variables but there is a variable that has the current state which we must make a blue print assignable .. and later TODO assign it to real states*/
 
 // Forward Declaration
 class UTankBarrel;
@@ -31,17 +32,14 @@ class BATTLETANK_API UTankAimingComponent : public UActorComponent
 	GENERATED_BODY()
 
 public:	
-	// Sets default values for this component's properties
-	UTankAimingComponent();
 
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	void AimAt(FVector HitLocation, float LaunchSpeed);
 
-	void SetBarrelReference(UTankBarrel* BarrelToSet);
-
-	void SetTurretReference(UTankTurret* TurretToSet);
+	UFUNCTION(BlueprintCallable, Category = "Setup")
+		void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
 
 protected:
 	// Called when the game starts
@@ -52,6 +50,8 @@ protected:
 
 
 private:	
+	// Sets default values for this component's properties
+	UTankAimingComponent();
 
 	UTankBarrel* Barrel = nullptr;
 
