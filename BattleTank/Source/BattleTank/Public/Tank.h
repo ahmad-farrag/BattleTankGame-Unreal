@@ -10,7 +10,6 @@
 // Forward declarations
 class UTankBarrel;
 class UTankAimingComponent;
-class UTankMovementComponent;
 class AProjectile;
 
 UCLASS()
@@ -27,8 +26,6 @@ protected:
 	UPROPERTY(BlueprintReadOnly)
 		UTankAimingComponent* TankAimingComponent = nullptr;
 
-	UPROPERTY(BlueprintReadOnly) //or else this won't show on blueprint
-		UTankMovementComponent* TankMovementComponent = nullptr;
 
 public:	
 
