@@ -34,8 +34,6 @@ class BATTLETANK_API UTankAimingComponent : public UActorComponent
 
 public:	
 
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	void AimAt(FVector HitLocation);
 
@@ -49,8 +47,11 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
+	// Called every frame
+	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
 	UPROPERTY(BlueprintReadOnly, Category = "State")
-		EFiringState FiringState = EFiringState::Aiming;
+		EFiringState FiringState = EFiringState::Reloading;
 
 
 private:	
@@ -63,6 +64,7 @@ private:
 
 	UTankTurret* Turret = nullptr;
 	
+	bool IsBarrelMoving();
 
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 		float LaunchSpeed = 8000;
@@ -74,4 +76,6 @@ private:
 		float ReloadTimeInSeconds = 3;
 
 	double LastFireTime = 0;
+
+	FVector AimDirection;
 };
