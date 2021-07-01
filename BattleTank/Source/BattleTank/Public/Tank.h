@@ -51,7 +51,8 @@ public:
 
 	double LastFireTime = 0;
 
-
+private:
+	virtual void BeginPlay() override;
 
 
 

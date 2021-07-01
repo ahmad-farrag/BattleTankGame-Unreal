@@ -8,6 +8,7 @@ void ATankAIController::BeginPlay()
 	Super::BeginPlay();
 
 
+
 }
 
 // Called every frame
