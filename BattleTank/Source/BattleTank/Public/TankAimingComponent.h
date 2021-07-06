@@ -16,7 +16,8 @@ enum class EFiringState : uint8
 {
 	Reloading,
 	Aiming,
-	Locked
+	Locked,
+	OutOfAmmo
 };
 /*Enumeration is a user defined datatype in C/C++ language. It is used to assign names to the integral constants which makes a program easy to read and maintain. The keyword “enum” is used to declare an enumeration.
 Enum in unreal allows you to use different options from code to blueprint .. for example firing state could be aiming or realoading or firing .. enum holds those variables but there is a variable that has the current state which we must make a blue print assignable .. and later TODO assign it to real states*/
@@ -47,6 +48,9 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, Category = "State")
 		EFiringState FiringState = EFiringState::Reloading;
+
+	UFUNCTION(BlueprintCallable, Category = "Firing")
+		int GetRoundsLeft() const;
 
 protected:
 	// Called when the game starts
@@ -81,4 +85,6 @@ private:
 	double LastFireTime = 0;
 
 	FVector AimDirection;
+
+	int RoundsLeft = 3;
 };
