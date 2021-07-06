@@ -36,8 +36,11 @@ void UTankTrack::ApplySidewaysForce()
 
 void UTankTrack::SetThrottle(float Throttle)
 {
+	DriveTrack(Throttle);
+}
 
-	// TODO clamp actual throttle value so player can't over-drive
+void UTankTrack::DriveTrack(float Throttle)
+{
 	auto ForceApplied = GetForwardVector() * Throttle * TrackMaxDrivingForce;
 	auto ForceLocation = GetComponentLocation();
 	auto TankRoot = Cast<UPrimitiveComponent>(GetOwner()->GetRootComponent());
