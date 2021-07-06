@@ -5,7 +5,7 @@
 
 UTankTrack::UTankTrack()
 {
-	PrimaryComponentTick.bCanEverTick = true;
+	PrimaryComponentTick.bCanEverTick = false;
 }
 
 void UTankTrack::BeginPlay()
@@ -15,14 +15,17 @@ void UTankTrack::BeginPlay()
 
 void UTankTrack::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
 {
-	UE_LOG(LogTemp, Warning, TEXT("I'm hit, I'm hit!"))
+	ApplySidewaysForce();
 }
 
-void UTankTrack::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+
+
+void UTankTrack::ApplySidewaysForce()
 {
 	auto SlippageSpeed = FVector::DotProduct(GetRightVector(), GetComponentVelocity());
 
 	// Work-out the required acceleration this frame to correct
+	auto DeltaTime = GetWorld()->GetDeltaSeconds();
 	auto CorrectionAcceleration = -SlippageSpeed / DeltaTime * GetRightVector();
 
 	// Calculate and apply sideways (F = m a)
