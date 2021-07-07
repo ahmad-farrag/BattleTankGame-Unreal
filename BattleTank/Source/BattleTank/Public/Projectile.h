@@ -9,6 +9,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "UObject/Object.h"
 #include "PhysicsEngine/RadialForceComponent.h"
+#include "Engine/World.h"
 #include "Projectile.generated.h"
 
 UCLASS()
@@ -44,5 +45,10 @@ private:
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 		URadialForceComponent* ExplosionForce = nullptr;
+
+	void OnTimerExpire();
+
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+		float DestroyDelay = 10.f;
 
 };
