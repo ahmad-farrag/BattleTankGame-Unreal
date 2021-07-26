@@ -33,6 +33,9 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
 		void FoundAimingComponent(UTankAimingComponent* AimCompRef);
 
+	UFUNCTION()
+		void OnPossedTankDeath();
+
 private:
 
 // Start the tank moving the barrel so that a shot would hit where
@@ -51,7 +54,11 @@ UPROPERTY(EditDefaultsOnly)
 UPROPERTY(EditDefaultsOnly)
 float LineTraceRange = 1000000;
 
+void SetPawn(APawn* InPawn);
+
 
 bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
 bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;
+
+
 };
